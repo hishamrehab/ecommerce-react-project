@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import Product from "./Product";
+import { Box, Stack } from "@mui/material";
 const Products = () => {
   const [products, setProducts] = useState([]);
 
@@ -19,15 +21,23 @@ const Products = () => {
   }, []);
 
   return (
-    <div>
-      {products.length > 0  && (
-          <ul>
-            {products.map((product) => (
-              <li key={product.id}>{product.title}</li>
-            ))}
-          </ul>
-        )}
-    </div>
+    <Box sx={{ marginTop: "50px" }}>
+      {products.length > 0 && (
+        <Stack
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap:"wrap",
+            
+          }}
+        >
+          {products.map((product) => (
+            <Product 
+             key={product.id} product={product} />
+          ))}
+        </Stack>
+      )}
+    </Box>
   );
 };
 

@@ -1,20 +1,55 @@
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { Container, Stack } from "@mui/material";
 
-function Product(props) {
-  const { product, showButton } = props;
-
+export const Product = ({ product }) => {
   return (
-    <>
-      <div className="card">
-        <img src={product.image} className="card-img-top" alt={product.title} />
-        <div className="card-body">
-          <h5 className="card-title">{product.title}</h5>
-          <p className="card-text">{product.description}</p>
-          <p> Price: {product.price}$</p>
-       
-        </div>
-      </div>
-    </>
+    <Container
+      sx={{
+        width: "350px",
+      }}
+    >
+      <Stack>
+        <Card
+          sx={{
+            "box-shadow": "10px 10px 2px 1px rgba(0, 0, 250,.1)",
+            marginBottom: "40px",
+            width: "310px",
+            height:"550px"
+          }}
+        >
+          <CardMedia
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+            component="img"
+            alt="green iguana"
+            image={product.images[0]}
+            height="350px"
+            width="300px"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {product.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {product.description}
+            </Typography>
+          </CardContent>
+           <CardActions>
+            <Button size="small">Add TO Cart</Button>
+            <Button size="small">Learn More</Button>
+          </CardActions> 
+        </Card>
+      </Stack>
+    </Container>
   );
-}
+};
 
 export default Product;

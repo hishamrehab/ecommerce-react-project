@@ -45,3 +45,8 @@
    html {scrollbar-color: #9e4673 #3d4a59;} 
 
    html {scroll-behavior: smooth;}
+.MuiBox-root {
+  display: flex;
+  flex-direction: row;
+  
+}
