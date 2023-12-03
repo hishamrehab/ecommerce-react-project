@@ -17,10 +17,10 @@ export const Product = ({ product }) => {
       <Stack>
         <Card
           sx={{
-            "box-shadow": "10px 10px 2px 1px rgba(0, 0, 250,.1)",
+            boxShadow: "10px 10px 2px 1px rgba(0, 0, 250,.1)",
             marginBottom: "40px",
             width: "310px",
-            height:"550px"
+            height: "650px",
           }}
         >
           <CardMedia
@@ -41,11 +41,23 @@ export const Product = ({ product }) => {
             <Typography variant="body2" color="text.secondary">
               {product.description}
             </Typography>
+
+            <Typography variant="body2" color="text.secondary">
+              {product.price}$
+            </Typography>
+
+            <Typography variant="body2" color="text.secondary">
+              {product.brand}
+            </Typography>
+
+            <Typography variant="body2" color="text.secondary">
+              {product.category}
+            </Typography>
           </CardContent>
-           <CardActions>
+          <CardActions>
             <Button size="small">Add TO Cart</Button>
             <Button size="small">Learn More</Button>
-          </CardActions> 
+          </CardActions>
         </Card>
       </Stack>
     </Container>

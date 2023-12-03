@@ -24,6 +24,7 @@ import {
   LaptopChromebookOutlined,
   MenuBookOutlined,
   Close,
+  Opacity,
 } from "@mui/icons-material";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -82,7 +83,6 @@ const Header3 = () => {
             width: 222,
             // @ts-ignore
             bgcolor: theme.palette.myColor.main,
-
             color: theme.palette.text.secondary,
           }}
         >
