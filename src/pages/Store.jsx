@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { ProductsArray } from "../ProductsStore";
-
+import ProductCard from "../components/productCard";
 const Store = () => {
   return (
     <>
@@ -10,7 +10,7 @@ const Store = () => {
         {ProductsArray.map((product, id) => {
           return (
             <Col align="center" key={id}>
-              <h1>{product.title}</h1>
+              <ProductCard product={product} />
             </Col>
           );
         })}

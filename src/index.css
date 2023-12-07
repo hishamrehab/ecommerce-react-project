@@ -54,3 +54,7 @@ html {
 .block {
   background-color: #fdf7f7;
 }
+
+.border {
+  border: 1px solid red;
+}

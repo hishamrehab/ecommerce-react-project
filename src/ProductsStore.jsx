@@ -2,17 +2,20 @@ const ProductsArray = [
   {
     id: "1",
     title: "Coffee",
-    Price: 3.99,
+    price: 3.99,
+    desc: "Coffee is a beverage prepared from roasted coffee beans. Darkly colored, bitter, and slightly acidic, coffee has a stimulating effect on humans, ...",
   },
   {
     id: "2",
     title: "sunglasses",
     price: 4.99,
+    desc: "Shop online for Sunglasses - Eyewear & Accessories from a huge selection of popular items in Egypt. Souq is now Amazon.eg. Free shipping & Cash on delivery ...",
   },
   {
     id: "3",
     title: "Camera",
-    Price: 94.99,
+    price: 94.99,
+    desc: "Capture detailed shots in low-light situations, and unleash your creativity with features like Portrait mode, Night Mode, Live Photos, slo-mo, time-lapse, ...",
   },
 ];
 
@@ -21,9 +24,9 @@ function getProductData(id) {
 
   if (productData == undefined) {
     console.log("Product data not exist for ID : " + id);
-      return undefined;
+    return undefined;
   }
- return productData;
+  return productData;
 }
 
-export { ProductsArray , getProductData };
+export { ProductsArray, getProductData };
