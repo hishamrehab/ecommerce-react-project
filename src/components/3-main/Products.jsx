@@ -29,7 +29,8 @@ const Products = () => {
               display: "flex",
               flexDirection: "row",
               flexWrap: "wrap",
-            }}>
+            }}
+          >
             {products.map((product) => (
               <Product key={product.id} product={product} />
             ))}

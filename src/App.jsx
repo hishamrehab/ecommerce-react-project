@@ -3,6 +3,15 @@ import { ColorModeContext, useMode } from "./theme";
 import Header from "./components/1-header/Header";
 // import { BrowserRouter , Route ,  Router } from "react-router-dom";
 import Category from "./components/3-main/Category";
+import Products from "./components/3-main/Products";
+import Cancel from "./pages/Cancel";
+import Store from "./pages/Store";
+import Success from "./pages/Success";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "react-bootstrap";
+import NavbarComponent from "./components/Navbar";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -10,9 +19,21 @@ function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Header />
-       <Category />
-    
+        <Container>
+          <NavbarComponent />
+
+          <BrowserRouter>
+            <Routes>
+              <Route index element={<Store />} />
+              <Route path="success" element={<Success />} />
+              <Route path="cancel" element={<Cancel />} />
+            </Routes>
+          </BrowserRouter>
+        </Container>
+
+        {/* <Header /> */}
+        {/* <Category /> */}
+        {/* <Products /> */}
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

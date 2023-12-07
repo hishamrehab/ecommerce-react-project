@@ -4,7 +4,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useTheme } from "@mui/material";
 
-
 const Category = () => {
   const [category, setCategories] = useState([]);
   const theme = useTheme();
@@ -15,7 +14,7 @@ const Category = () => {
       })
       .then((data) => {
         setCategories(data);
-        console.log(data);
+  
       });
   };
 
@@ -23,7 +22,6 @@ const Category = () => {
     fetchCategoryData();
   }, []);
 
-  
   return (
     <Box
       sx={{
