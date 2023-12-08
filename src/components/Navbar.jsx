@@ -3,7 +3,7 @@ import { Button, Container, Navbar, Modal } from "react-bootstrap";
 import { useState, useContext } from "react";
 import { IoMdClose } from "react-icons/io";
 import { CartContext } from "../CartContext";
-import { current } from "@reduxjs/toolkit";
+import CardProduct from "./CardProduct";
 
 const NavbarComponent = () => {
   const cart = useContext(CartContext);
@@ -49,7 +49,12 @@ const NavbarComponent = () => {
               <>
                 <p>Items in your cart:</p>
                 {cart.items.map((currentProduct, id) => {
-                  <h1>{currentProduct.id}</h1>;
+                  <CardProduct
+                    key={id}
+                    id={currentProduct.id}
+                    quantity={currentProduct.quantity}
+                  >
+                  </CardProduct>;
                 })}
                 <h1>Total:{cart.getTotalCost().toFixed(2)}</h1>
                 <Button variant="success">

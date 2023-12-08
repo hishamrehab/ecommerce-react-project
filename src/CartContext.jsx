@@ -1,19 +1,19 @@
 import { createContext, useState } from "react";
-import { ProductsArray, getProductData } from "./productsStore";
+import { ProductsArray, getProductData } from "./ProductsStore";
 
 export const CartContext = createContext({
   items: [],
-  getProductQuantity: () => {},
-  addOneToCart: () => {},
-  removeOneFromCart: () => {},
-  deleteFromCart: () => {},
-  getTotalCost: () => {},
+  getProductQuantity,
+  addOneToCart,
+  removeOneFromCart,
+  deleteFromCart,
+  getTotalCost,
 });
 
 export function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
 
-  // [ { id: 1 , quantity: 3 }, { id: 2, quantity: 1 } ]
+
 
   function getProductQuantity(id) {
     const quantity = cartProducts.find(
@@ -31,7 +31,7 @@ export function CartProvider({ children }) {
     const quantity = getProductQuantity(id);
 
     if (quantity === 0) {
-      // product is not in cart
+
       setCartProducts([
         ...cartProducts,
         {
@@ -40,14 +40,12 @@ export function CartProvider({ children }) {
         },
       ]);
     } else {
-      // product is in cart
-      // [ { id: 1 , quantity: 3 }, { id: 2, quantity: 1 } ]    add to product id of 2
       setCartProducts(
         cartProducts.map(
           (product) =>
             product.id === id // if condition
-              ? { ...product, quantity: product.quantity + 1 } // if statement is true
-              : product // if statement is false
+              ? { ...product, quantity: product.quantity + 1 } 
+              : product 
         )
       );
     }
@@ -62,18 +60,16 @@ export function CartProvider({ children }) {
       setCartProducts(
         cartProducts.map(
           (product) =>
-            product.id === id // if condition
-              ? { ...product, quantity: product.quantity - 1 } // if statement is true
-              : product // if statement is false
+            product.id === id 
+              ? { ...product, quantity: product.quantity - 1 } 
+              : product 
         )
       );
     }
   }
 
   function deleteFromCart(id) {
-    // [] if an object meets a condition, add the object to array
-    // [product1, product2, product3]
-    // [product1, product3]
+   
     setCartProducts((cartProducts) =>
       cartProducts.filter((currentProduct) => {
         return currentProduct.id != id;
@@ -105,4 +101,3 @@ export function CartProvider({ children }) {
 }
 
 export default CartProvider;
-
