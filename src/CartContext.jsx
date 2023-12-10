@@ -1,20 +1,20 @@
 import { createContext, useState } from "react";
-import { ProductsArray, getProductData } from "./ProductsStore";
+
+import { productsArray , getProductData} from "./ProductsStore";
 
 export const CartContext = createContext({
   items: [],
-  getProductQuantity,
-  addOneToCart,
-  removeOneFromCart,
-  deleteFromCart,
-  getTotalCost,
+  getProductQuantity: () => {},
+  addOneToCart: () => {},
+  removeOneFromCart: () => {},
+  deleteFromCart: () => {},
+  getTotalCost: () => {},
 });
 
 export function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
 
-
-
+  //getProductQuantity
   function getProductQuantity(id) {
     const quantity = cartProducts.find(
       (product) => product.id === id
@@ -27,11 +27,13 @@ export function CartProvider({ children }) {
     return quantity;
   }
 
+
+
+  // addOneToCart
   function addOneToCart(id) {
     const quantity = getProductQuantity(id);
 
     if (quantity === 0) {
-
       setCartProducts([
         ...cartProducts,
         {
@@ -41,11 +43,10 @@ export function CartProvider({ children }) {
       ]);
     } else {
       setCartProducts(
-        cartProducts.map(
-          (product) =>
-            product.id === id // if condition
-              ? { ...product, quantity: product.quantity + 1 } 
-              : product 
+        cartProducts.map((product) =>
+          product.id === id // if condition
+            ? {...product, quantity: product.quantity + 1 }
+            : product
         )
       );
     }
@@ -58,24 +59,24 @@ export function CartProvider({ children }) {
       deleteFromCart(id);
     } else {
       setCartProducts(
-        cartProducts.map(
-          (product) =>
-            product.id === id 
-              ? { ...product, quantity: product.quantity - 1 } 
-              : product 
+        cartProducts.map((product) =>
+          product.id === id
+            ? { ...product, quantity: product.quantity - 1 }
+            : product
         )
       );
     }
   }
 
+  
   function deleteFromCart(id) {
-   
     setCartProducts((cartProducts) =>
       cartProducts.filter((currentProduct) => {
         return currentProduct.id != id;
       })
     );
   }
+
 
   function getTotalCost() {
     let totalCost = 0;
@@ -85,6 +86,8 @@ export function CartProvider({ children }) {
     });
     return totalCost;
   }
+
+
 
   const contextValue = {
     items: cartProducts,
@@ -101,3 +104,12 @@ export function CartProvider({ children }) {
 }
 
 export default CartProvider;
+
+
+
+
+
+
+
+
+

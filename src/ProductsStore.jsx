@@ -1,4 +1,4 @@
-const ProductsArray = [
+const productsArray = [
   {
     id: "1",
     title: "Coffee",
@@ -19,8 +19,9 @@ const ProductsArray = [
   },
 ];
 
+
 function getProductData(id) {
-  let productData = ProductsArray.find((product) => product.id === id);
+  let productData = productsArray.find((product) => product.id === id);
 
   if (productData == undefined) {
     console.log("Product data not exist for ID : " + id);
@@ -29,4 +30,4 @@ function getProductData(id) {
   return productData;
 }
 
-export { ProductsArray, getProductData };
+export { productsArray, getProductData };

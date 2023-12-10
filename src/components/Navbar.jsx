@@ -5,6 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import { CartContext } from "../CartContext";
 import CardProduct from "./CardProduct";
 
+
 const NavbarComponent = () => {
   const cart = useContext(CartContext);
   const [show, setShow] = useState(false);
@@ -19,56 +20,39 @@ const NavbarComponent = () => {
   return (
     <>
       <Navbar expand="sm">
-        <Navbar.Brand href="/">E-commerce store</Navbar.Brand>
+        <Navbar.Brand href="/">Ecommerce Store</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <Button onClick={handleShow}>Cart {productsCount} items</Button>
+          <Button onClick={handleShow}>Cart ({productsCount} Items)</Button>
         </Navbar.Collapse>
-
-        <Modal show={show} onHide={handleClose}>
-          <div className="d-flex align-items-center justify-content-between">
-            <Modal.Title
-              style={{
-                padding: "15px",
-              }}
-            >
-              Hisham Rehab E-commerce Project
-            </Modal.Title>
-            <IoMdClose
-              onClick={handleClose}
-              style={{
-                fontSize: "30px",
-                marginRight: "10px",
-                cursor: "pointer",
-              }}
-            />
-          </div>
-
-          <Modal.Body>
-            {productsCount > 0 ? (
-              <>
-                <p>Items in your cart:</p>
-                {cart.items.map((currentProduct, id) => {
-                  <CardProduct
-                    key={id}
-                    id={currentProduct.id}
-                    quantity={currentProduct.quantity}
-                  >
-                  </CardProduct>;
-                })}
-                <h1>Total:{cart.getTotalCost().toFixed(2)}</h1>
-                <Button variant="success">
-                  Purchase item!
-                </Button>
-              </>
-            ) : (
-              <h1>There are in the cart!</h1>
-
-
-            )}
-          </Modal.Body>
-        </Modal>
       </Navbar>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Shopping Cart</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {productsCount > 0 ? (
+            <>
+              <p>Items in your cart:</p>
+              {cart.items.map((currentProduct, idx) => (
+                <CardProduct
+                  key={idx}
+                  id={currentProduct.id}
+                  quantity={currentProduct.quantity}
+                ></CardProduct>
+              ))}
+
+              <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
+
+              <Button variant="success" >
+                Purchase items!
+              </Button>
+            </>
+          ) : (
+            <h1>There are no items in your cart!</h1>
+          )}
+        </Modal.Body>
+      </Modal>
     </>
   );
 };
