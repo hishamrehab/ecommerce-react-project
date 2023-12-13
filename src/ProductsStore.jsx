@@ -20,6 +20,7 @@ const productsArray = [
 ];
 
 
+
 function getProductData(id) {
   let productData = productsArray.find((product) => product.id === id);
 

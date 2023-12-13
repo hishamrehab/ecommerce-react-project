@@ -5,7 +5,6 @@ import { IoMdClose } from "react-icons/io";
 import { CartContext } from "../CartContext";
 import CardProduct from "./CardProduct";
 
-
 const NavbarComponent = () => {
   const cart = useContext(CartContext);
   const [show, setShow] = useState(false);
@@ -44,9 +43,7 @@ const NavbarComponent = () => {
 
               <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
 
-              <Button variant="success" >
-                Purchase items!
-              </Button>
+              <Button variant="success">Purchase items!</Button>
             </>
           ) : (
             <h1>There are no items in your cart!</h1>

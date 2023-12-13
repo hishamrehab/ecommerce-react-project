@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-import { productsArray , getProductData} from "./ProductsStore";
+import { productsArray, getProductData } from "./ProductsStore";
 
 export const CartContext = createContext({
   items: [],
@@ -27,8 +27,6 @@ export function CartProvider({ children }) {
     return quantity;
   }
 
-
-
   // addOneToCart
   function addOneToCart(id) {
     const quantity = getProductQuantity(id);
@@ -45,7 +43,7 @@ export function CartProvider({ children }) {
       setCartProducts(
         cartProducts.map((product) =>
           product.id === id // if condition
-            ? {...product, quantity: product.quantity + 1 }
+            ? { ...product, quantity: product.quantity + 1 }
             : product
         )
       );
@@ -68,7 +66,6 @@ export function CartProvider({ children }) {
     }
   }
 
-  
   function deleteFromCart(id) {
     setCartProducts((cartProducts) =>
       cartProducts.filter((currentProduct) => {
@@ -76,7 +73,6 @@ export function CartProvider({ children }) {
       })
     );
   }
-
 
   function getTotalCost() {
     let totalCost = 0;
@@ -86,8 +82,6 @@ export function CartProvider({ children }) {
     });
     return totalCost;
   }
-
-
 
   const contextValue = {
     items: cartProducts,
@@ -104,12 +98,3 @@ export function CartProvider({ children }) {
 }
 
 export default CartProvider;
-
-
-
-
-
-
-
-
-

@@ -8,7 +8,6 @@ import Typography from "@mui/material/Typography";
 import { Container, Stack } from "@mui/material";
 
 export const Product = ({ product }) => {
-
   return (
     <Container
       sx={{

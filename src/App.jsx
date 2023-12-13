@@ -22,18 +22,15 @@ function App() {
           {/* <Header />  */}
           <Container>
             <NavbarComponent />
-         
-           
-               <Store />
-                {/* <Route path="success" element={<Success />} />
+
+            <Store />
+            {/* <Route path="success" element={<Success />} />
                 <Route path="cancel" element={<Cancel />} /> */}
-            
-               <Category /> 
-      
+
+            <Category />
           </Container>
         </CartProvider>
 
-    
         <Products />
       </ThemeProvider>
     </ColorModeContext.Provider>
@@ -41,3 +38,4 @@ function App() {
 }
 
 export default App;
+
