@@ -12,6 +12,19 @@ import NavbarComponent from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartProvider from "./CartContext";
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 function App() {
   const [theme, colorMode] = useMode();
   return (

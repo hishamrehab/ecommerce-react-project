@@ -7,12 +7,12 @@ const Products = () => {
   const [products, setProducts] = useState([]);
 
   const fetchUserData = () => {
-    fetch("https://dummyjson.com/products")
+    fetch("http://localhost:1337/api/products")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        setProducts(data.products);
+        setProducts(data);
       });
   };
 
