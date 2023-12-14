@@ -1,18 +1,21 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Product from "./Product";
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
+import Category from './Category';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-
   const fetchUserData = () => {
-    fetch("http://localhost:1337/api/products")
+    
+
+    fetch("http://localhost:1337/api/products?populate=*")
       .then((response) => {
         return response.json();
       })
-      .then((data) => {
-        setProducts(data);
+      .then((response) => {
+        setProducts(response.data);
+         console.log(products);
       });
   };
 
@@ -21,24 +24,39 @@ const Products = () => {
   }, []);
 
   return (
-    <>
-      <Box sx={{ marginTop: "50px" }}>
-        {products.length > 0 && (
-          <Stack
-            sx={{
+
+
+
+
+   
+      
+
+
+
+
+
+
+
+
+
+    <Box sx={{ marginTop: "50px" }}>
+       {products.length > 0 && (
+
+      <Stack      
+      sx={{
               display: "flex",
               flexDirection: "row",
               flexWrap: "wrap",
             }}
           >
-            {products.map((product) => (
-              <Product key={product.id} product={product} />
-            ))}
-          </Stack>
+        {products.map((product) => (
+          <>
+            <Product key={product.id} product={product} />
+          </>
+        ))}
+      </Stack>
         )}
-      </Box>
-    </>
-  );
-};
+    </Box>
+  )}
 
 export default Products;

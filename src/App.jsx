@@ -35,12 +35,12 @@ function App() {
           {/* <Header />  */}
           <Container>
             <NavbarComponent />
-
+         
             <Store />
             {/* <Route path="success" element={<Success />} />
                 <Route path="cancel" element={<Cancel />} /> */}
 
-            <Category />
+            {/* <Category /> */}
           </Container>
         </CartProvider>
 

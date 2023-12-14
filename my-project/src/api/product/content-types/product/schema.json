@@ -4,7 +4,8 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "product"
+    "displayName": "product",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,12 +20,12 @@
       "type": "text"
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": true,
-      "required": false
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "price": {
       "type": "float",
@@ -44,6 +45,10 @@
         "women",
         "child"
       ],
+      "required": true
+    },
+    "brand": {
+      "type": "string",
       "required": true
     }
   }

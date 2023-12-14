@@ -8,7 +8,6 @@ import Typography from "@mui/material/Typography";
 import { Container, Stack } from "@mui/material";
 
 export const Product = ({ product }) => {
-   console.log(product);
   return (
     <Container
       sx={{
@@ -21,7 +20,7 @@ export const Product = ({ product }) => {
             boxShadow: "10px 10px 2px 1px rgba(0, 0, 250,.1)",
             marginBottom: "40px",
             width: "310px",
-            height: "650px",
+            height: "800px",
           }}
         >
           <CardMedia
@@ -31,30 +30,38 @@ export const Product = ({ product }) => {
             }}
             component="img"
             alt="green iguana"
-            image={product.images[0]}
-            height="350px"
+            //  src={product.attributes.image.data.attributes.url}
+            image={`http://localhost:1337${product.attributes.image.data[0].attributes.url}`}
+            height="400px"
             width="300px"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {product.title}
+            <Typography gutterBottom variant="h2" component="div">
+              {product.attributes.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {product.description}
+              {product.attributes.desc}
             </Typography>
 
             <Typography variant="body2" color="text.secondary">
-              {product.price}$
+              {product.attributes.price}$
             </Typography>
 
             <Typography variant="body2" color="text.secondary">
-              {product.brand}
+              {product.attributes.brand}
             </Typography>
 
             <Typography variant="body2" color="text.secondary">
-              {product.category}
+              {product.attributes.Category}
             </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {product.attributes.rating}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {product.isfeatured}
+            </Typography> 
           </CardContent>
+
           <CardActions>
             <Button size="small">Add TO Cart</Button>
             <Button size="small">Learn More</Button>
