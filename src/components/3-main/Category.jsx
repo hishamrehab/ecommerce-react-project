@@ -7,14 +7,14 @@ import { useTheme } from "@mui/material";
 const Category = () => {
   const [category, setCategories] = useState([]);
   const theme = useTheme();
+
   const fetchCategoryData = () => {
-    fetch("https://dummyjson.com/products/categories")
+    fetch("http://localhost:1337/api/products?populate=Category")
       .then((resp) => {
         return resp.json();
       })
-      .then((data) => {
-        setCategories(data);
-  
+      .then((resp) => {
+        setCategories(response.data);
       });
   };
 

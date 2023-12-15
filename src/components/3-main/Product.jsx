@@ -34,8 +34,11 @@ export const Product = ({ product }) => {
             image={`http://localhost:1337${product.attributes.image.data[0].attributes.url}`}
             height="400px"
             width="300px"
+            object-fit="cover"
           />
           <CardContent>
+
+            
             <Typography gutterBottom variant="h2" component="div">
               {product.attributes.title}
             </Typography>
@@ -59,7 +62,7 @@ export const Product = ({ product }) => {
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {product.isfeatured}
-            </Typography> 
+            </Typography>
           </CardContent>
 
           <CardActions>
