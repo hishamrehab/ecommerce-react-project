@@ -9,18 +9,24 @@ import { ToggleButtonGroup } from "@mui/material";
 const Products = () => {
   // const theme = useTheme();
   const allProducts = "http://localhost:1337/api/products?populate=*";
-  const menCategory =
-    "http://localhost:1337/api/products?populate=*&filters[Category][$eq]=men";
-  const womenCategory =
-    "http://localhost:1337/api/products?populate=*&filters[Category][$eq]=women";
-  const childCategory =
-    "http://localhost:1337/api/products?populate=*&filters[Category][$eq]=child";
+
+  const filterUrl =
+    "http://localhost:1337/api/products?populate=*&filters[Category][$eq]=";
 
   const [products, setProducts] = useState([]);
 
-  const [data, setData] = useState(womenCategory);
+  const FilterProduct = (type) => {
+    fetch(`${filterUrl}${type}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        setProducts(response.data);
+      });
+  };
+
   const fetchUserData = () => {
-    fetch(data)
+    fetch(allProducts)
       .then((response) => {
         return response.json();
       })
@@ -37,35 +43,35 @@ const Products = () => {
     <>
       <ToggleButtonGroup>
         <h1>ALL PRODUCTS</h1>
-        <Button variant="contained" color="success" value={allProducts} >
+
+        <Button variant="contained" color="success" onClick={fetchUserData}>
           All Products
         </Button>
         <Button
           variant="contained"
           color="success"
-          value={menCategory}
-           onChange={() => setData(menCategory)}
+          onClick={() => FilterProduct("men")}
         >
           Men
         </Button>
         <Button
           variant="contained"
           color="success"
-          // onClick={() => setCategory(womenCategory)}
+          onClick={() => FilterProduct("women")}
         >
           Women's
         </Button>
         <Button
           variant="contained"
           color="success"
-          // onClick={() => setCategory(childCategory)}
+          onClick={() => FilterProduct("child")}
         >
           Child
         </Button>
       </ToggleButtonGroup>
 
       <Box sx={{ marginTop: "50px" }}>
-        {products.length > 0 && (
+        {products.length > 0 ? (
           <Stack
             sx={{
               display: "flex",
@@ -81,6 +87,8 @@ const Products = () => {
               </Box>
             ))}
           </Stack>
+        ) : (
+          <h1>hello</h1>
         )}
         {/* <Category /> */}
       </Box>

@@ -14,7 +14,6 @@ export const Product = ({ product }) => {
         width: "350px",
       }}
     >
-
       <Stack>
         <Card
           sx={{
