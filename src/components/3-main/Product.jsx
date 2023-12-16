@@ -14,6 +14,7 @@ export const Product = ({ product }) => {
         width: "350px",
       }}
     >
+
       <Stack>
         <Card
           sx={{
@@ -37,8 +38,6 @@ export const Product = ({ product }) => {
             object-fit="cover"
           />
           <CardContent>
-
-            
             <Typography gutterBottom variant="h2" component="div">
               {product.attributes.title}
             </Typography>

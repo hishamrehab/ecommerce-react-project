@@ -3,52 +3,28 @@ import { dark } from "@mui/material/styles/createPalette";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useTheme } from "@mui/material";
+import Product from "./Products";
 
 const Category = () => {
-  const [category, setCategories] = useState([]);
-  const theme = useTheme();
+  const [data, setData] = useState(allProducts);
 
-  const fetchCategoryData = () => {
-    fetch("http://localhost:1337/api/products?populate=Category")
-      .then((resp) => {
-        return resp.json();
-      })
-      .then((resp) => {
-        setCategories(response.data);
-      });
-  };
 
-  useEffect(() => {
-    fetchCategoryData();
-  }, []);
+
+
+
+
+  // const [items, setItems] = useState(Product);
+  // const theme = useTheme();
+
+  // const handelFilterCategory = (catItem) => {
+  //   const updateItem = Product.filter(() => {
+  //     return catItem.Category === catItem;
+  //   });
+  //   setItems(updateItem);
+  // };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        margin: "20px",
-      }}
-    >
-      {category.map((cat) => {
-        return (
-          <Button
-            sx={{
-              width: 222,
-              margin: "10px",
-              bgcolor: theme.palette.myColor.main,
-              color: theme.palette.text.secondary,
-              "&:hover": {
-                opacity: "0.7",
-              },
-            }}
-            key={cat}
-          >
-            {cat}
-          </Button>
-        );
-      })}
-    </Box>
+   <h1>hello</h1>
   );
 };
 

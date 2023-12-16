@@ -11,36 +11,29 @@ import { Container } from "react-bootstrap";
 import NavbarComponent from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartProvider from "./CartContext";
-import StoreContext from "./components/3-main/StoreContext";
+// import StoreContext from "./components/3-main/StoreContext";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [filter, setFilter] = useState(
-    "http://localhost:1337/api/products?populate=*"
-  );
-
-  
+ 
   const [theme, colorMode] = useMode();
   return (
     <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
+      {/* <ThemeProvider theme={theme}> */}
         <CssBaseline />
         <CartProvider>
+          {/* <Store /> */}
           {/* <Header />  */}
           <Container>
             <NavbarComponent />
-            <StoreContext.Provider value={{ filter, setFilter }}>
-              <Products />
-            </StoreContext.Provider>
+            {/* <Category  /> */}
+            <Products />
 
-            <Store />
             {/* <Route path="success" element={<Success />} />
                 <Route path="cancel" element={<Cancel />} /> */}
-
-            {/* <Category /> */}
           </Container>
         </CartProvider>
-      </ThemeProvider>
+      {/* </ThemeProvider> */}
     </ColorModeContext.Provider>
   );
 }
