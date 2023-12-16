@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import Product from "./Product";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { ToggleButtonGroup } from "@mui/material";
-import Category from "./Category";
+
 // import { useTheme } from "@emotion/react";
+
 const Products = () => {
   // const theme = useTheme();
   const allProducts = "http://localhost:1337/api/products?populate=*";
@@ -16,16 +17,15 @@ const Products = () => {
     "http://localhost:1337/api/products?populate=*&filters[Category][$eq]=child";
 
   const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState(menCategory);
 
+  const [data, setData] = useState(womenCategory);
   const fetchUserData = () => {
-    fetch(category)
+    fetch(data)
       .then((response) => {
         return response.json();
       })
       .then((response) => {
         setProducts(response.data);
-      
       });
   };
 
@@ -35,30 +35,30 @@ const Products = () => {
 
   return (
     <>
-      <ToggleButtonGroup >
+      <ToggleButtonGroup>
         <h1>ALL PRODUCTS</h1>
-        <Button variant="contained" color="success" value={allProducts}>
+        <Button variant="contained" color="success" value={allProducts} >
           All Products
         </Button>
         <Button
           variant="contained"
           color="success"
           value={menCategory}
-          // onClick={() => setCategory(menCategory)}
+           onChange={() => setData(menCategory)}
         >
           Men
         </Button>
         <Button
           variant="contained"
           color="success"
-          onClick={() => setCategory(womenCategory)}
+          // onClick={() => setCategory(womenCategory)}
         >
           Women's
         </Button>
         <Button
           variant="contained"
           color="success"
-          onClick={() => setCategory(childCategory)}
+          // onClick={() => setCategory(childCategory)}
         >
           Child
         </Button>
