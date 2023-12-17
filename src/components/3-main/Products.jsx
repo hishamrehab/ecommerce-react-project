@@ -81,7 +81,6 @@ const Products = () => {
               <Box key={product.id}>
                 <>
                   <Product product={product} />
-              
                 </>
               </Box>
             ))}

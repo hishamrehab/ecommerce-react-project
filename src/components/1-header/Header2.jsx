@@ -1,4 +1,4 @@
-import { ExpandMore, ShoppingCartOutlined } from "@mui/icons-material";
+import { ShoppingCartOutlined } from "@mui/icons-material";
 import {
   Badge,
   Container,
@@ -12,26 +12,18 @@ import SearchIcon from "@mui/icons-material/Search";
 import { styled } from "@mui/material/styles";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import { useState } from "react";
-import Link from "@mui/material/Link";
-
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
-
-
+import { Link } from "react-router-dom";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useSelector } from "react-redux";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
+  "& .MuiBadge-badge": {
     right: -3,
     top: 13,
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: '0 4px',
+    padding: "0 4px",
   },
 }));
-
-
-
-
-
 
 const Search = styled("div")(({ theme }) => ({
   flexGrow: 0.4,
@@ -78,18 +70,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Header2 = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const products = useSelector((state) => state.cart.products);
+
   const open = Boolean(anchorEl);
   const handleClickListItem = (event) => {
     setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuItemClick = (event, index) => {
-    setSelectedIndex(index);
-    setAnchorEl(null);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
   };
 
   const theme = useTheme();
@@ -113,8 +98,13 @@ const Header2 = () => {
 
       <Stack direction={"row"} alignItems={"center"}>
         <IconButton aria-label="cart">
-          <StyledBadge badgeContent={4} color="secondary">
-            <Link href="cart">
+          <StyledBadge
+            badgeContent={products.length > 0 ? products.length : "0"}
+             
+            color="secondary"
+          
+          >
+            <Link to="cart">
               <ShoppingCartIcon />
             </Link>
           </StyledBadge>

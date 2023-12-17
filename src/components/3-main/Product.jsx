@@ -6,8 +6,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Container, Stack } from "@mui/material";
+import { addToCart } from "../../redux/cartReducer";
+import { useDispatch } from "react-redux";
 
 export const Product = ({ product }) => {
+  const dispatch = useDispatch();
+
   return (
     <Container
       sx={{
@@ -64,7 +68,22 @@ export const Product = ({ product }) => {
           </CardContent>
 
           <CardActions>
-            <Button size="small">Add TO Cart</Button>
+            <Button
+              size="small"
+              onClick={() =>
+                dispatch(
+                  addToCart({
+                    id: product.id,
+                    title: product.attributes.title,
+                    desc: product.attributes.desc,
+                    price: product.attributes.price,
+                    image:`http://localhost:1337${product.attributes.image.data[0].attributes.url}`
+                  })
+                )
+              }
+            >
+              Add TO Cart
+            </Button>
             <Button size="small">Learn More</Button>
           </CardActions>
         </Card>
