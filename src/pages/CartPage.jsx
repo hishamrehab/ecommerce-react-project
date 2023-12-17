@@ -9,6 +9,7 @@ export default function Cart() {
         <div className="cart-icon">
           <FaCartPlus />
         </div>
+        <a href="/">Home page</a>
       </div>
       <div className="container">
         <ul className="cart-list">
