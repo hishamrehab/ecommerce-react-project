@@ -20,7 +20,7 @@ export const Product = ({ product }) => {
             boxShadow: "10px 10px 2px 1px rgba(0, 0, 250,.1)",
             marginBottom: "40px",
             width: "310px",
-            height: "800px",
+            height: "830px",
           }}
         >
           <CardMedia

@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Product from "./Product";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { ToggleButtonGroup } from "@mui/material";
-
 // import { useTheme } from "@emotion/react";
 
 const Products = () => {
@@ -12,7 +11,6 @@ const Products = () => {
 
   const filterUrl =
     "http://localhost:1337/api/products?populate=*&filters[Category][$eq]=";
-
   const [products, setProducts] = useState([]);
 
   const FilterProduct = (type) => {
@@ -83,6 +81,7 @@ const Products = () => {
               <Box key={product.id}>
                 <>
                   <Product product={product} />
+              
                 </>
               </Box>
             ))}
@@ -90,7 +89,6 @@ const Products = () => {
         ) : (
           <h1>hello</h1>
         )}
-        {/* <Category /> */}
       </Box>
     </>
   );

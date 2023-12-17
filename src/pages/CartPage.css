@@ -1,0 +1,15 @@
+.cart-icon {
+
+  text-align: center;
+  font-size: 100px;
+}
+
+.cart-title {
+    font-size: 100px;
+    text-align: center;
+}
+
+.cart-item-image {
+    width: 250px;
+    border-radius: 50%;
+}
